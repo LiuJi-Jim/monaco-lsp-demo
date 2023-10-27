@@ -1,0 +1,32 @@
+{
+  "name": "vite-monaco-lsp",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "clean": "shx rm -rf dist",
+    "copy:monaco-workers": "shx mkdir -p public/monaco-workers && cp -r node_modules/monaco-editor-workers/dist/workers/*.js ./public/monaco-workers",
+    "dev": "npm run copy:monaco-workers && vite",
+    "build": "npm run clean && npm run copy:monaco-workers && vue-tsc && vite build",
+    "preview": "vite preview",
+    "postinstall": "npm run copy:monaco-workers && monaco-treemending"
+  },
+  "dependencies": {
+    "monaco-editor": "0.41.0",
+    "monaco-editor-workers": "0.41.0",
+    "monaco-languageclient": "6.4.4",
+    "vscode": "npm:@codingame/monaco-vscode-api@1.81.5",
+    "vscode-languageclient": "~8.1.0",
+    "vscode-ws-jsonrpc": "^3.0.0",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.7",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "shx": "0.3.4",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-plugin-monaco-editor": "1.1.0",
+    "vue-tsc": "^1.8.5"
+  }
+}
