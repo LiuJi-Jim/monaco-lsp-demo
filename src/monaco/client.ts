@@ -17,7 +17,7 @@ export const createLanguageClient = (
     name: 'Sample Language Client',
     clientOptions: {
       // use a language id as a document selector
-      documentSelector: ['json'],
+      documentSelector: ['sql'],
       // disable the default error handler
       errorHandler: {
         error: () => ({ action: ErrorAction.Continue }),

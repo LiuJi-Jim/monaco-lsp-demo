@@ -28,13 +28,6 @@ buildWorkerDefinition(
   true
 );
 
-export type ExampleJsonEditor = {
-  languageId: string;
-  editor: editor.IStandaloneCodeEditor;
-  uri: Uri;
-  modelRef: IReference<ITextFileEditorModel>;
-};
-
 export type ExampleSqlEditor = {
   languageId: string;
   editor: editor.IStandaloneCodeEditor;
@@ -42,32 +35,20 @@ export type ExampleSqlEditor = {
   modelRef: IReference<ITextFileEditorModel>;
 };
 
-export const createJsonEditor = async (config: {
-  htmlElement: HTMLElement;
-  content: string;
-}) => {
-  // create the model
-  const uri = Uri.parse('/workspace/example.json');
-  const modelRef = await createModelReference(uri, config.content);
-  modelRef.object.setLanguageId('json');
-
-  // create monaco editor
-  const editor = createConfiguredEditor(config.htmlElement, {
-    model: modelRef.object.textEditorModel,
-    glyphMargin: true,
-    lightbulb: {
-      enabled: true,
-    },
-    automaticLayout: true,
-    wordBasedSuggestions: false,
-  });
-
-  const result = {
-    editor,
-    uri,
-    modelRef,
-  } as ExampleJsonEditor;
-  return Promise.resolve(result);
+export const createExampleSqlContent = () => {
+  return `SELECT
+  dept_name,
+  COUNT(gender) AS gender_count,
+  SUM(IF(gender = 'M', 1, 0)) AS male_count,
+  SUM(IF(gender = 'F', 1, 0)) AS female_count,
+  SUM(IF(gender = 'M', 1, 0)) / COUNT(gender) AS male_ratio,
+  SUM(IF(gender = 'F', 1, 0)) / COUNT(gender) AS female_ratio
+FROM
+  employee
+  JOIN dept_emp ON employee.emp_no = dept_emp.emp_no
+  JOIN department ON dept_emp.dept_no = department.dept_no
+GROUP BY
+  dept_name`;
 };
 
 export const createSqlEditor = async (config: {

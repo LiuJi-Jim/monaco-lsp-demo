@@ -21,13 +21,7 @@ export const performInit = async (vscodeApiInit: boolean) => {
       });
       state.servicesInitialized = true;
 
-      // register the JSON language with Monaco
-      languages.register({
-        id: 'json',
-        extensions: ['.json', '.jsonc'],
-        aliases: ['JSON', 'json'],
-        mimetypes: ['application/json'],
-      });
+      // register the SQL language with Monaco
       languages.register({
         id: 'sql',
         extensions: ['.sql'],
