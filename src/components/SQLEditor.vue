@@ -13,10 +13,7 @@ onMounted(async () => {
   );
   const { createSqlEditor } = await import('../monaco/editor');
 
-  if (!(window as any).__service_initialized) {
-    await performInit(true);
-    (window as any).__service_initialized = true;
-  }
+  await performInit(true);
 
   const container = containerRef.value!;
   const content = `SELECT
@@ -36,7 +33,6 @@ GROUP BY
     htmlElement: container,
     content,
   });
-
   console.log('result', result);
   const url = createUrl('localhost', 30000, '/sampleServer');
   createWebSocketAndStartClient(url);

@@ -1,22 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import SQLEditor from './components/SQLEditor.vue';
-
-const lang = ref<'SQL' | 'JSON'>('SQL');
 </script>
 
 <template>
-  <div style="display: flex; justify-content: center; column-gap: 8px">
-    <label>
-      <input v-model="lang" type="radio" value="SQL" />
-      <span>SQL</span>
-    </label>
-    <label>
-      <input v-model="lang" type="radio" value="JSON" />
-      <span>JSON</span>
-    </label>
-  </div>
-  <SQLEditor v-if="lang === 'SQL'" />
+  <SQLEditor />
 </template>
 
 <style scoped>

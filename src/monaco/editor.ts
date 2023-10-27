@@ -11,8 +11,9 @@ import { editor } from 'monaco-editor/esm/vs/editor/editor.api.js';
 // import 'monaco-editor/esm/vs/editor/standalone/browser/referenceSearch/standaloneReferenceSearch.js';
 
 import 'monaco-editor/esm/vs/basic-languages/sql/sql.contribution.js';
-import 'monaco-editor/esm/vs/basic-languages/typescript/typescript.contribution.js';
-import 'monaco-editor/esm/vs/language/typescript/monaco.contribution.js';
+// import 'monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution.js';
+// import 'monaco-editor/esm/vs/basic-languages/typescript/typescript.contribution.js';
+// import 'monaco-editor/esm/vs/language/typescript/monaco.contribution.js';
 import {
   createModelReference,
   createConfiguredEditor,
