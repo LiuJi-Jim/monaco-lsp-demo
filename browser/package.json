@@ -12,16 +12,17 @@
     "postinstall": "npm run copy:monaco-workers && monaco-treemending"
   },
   "dependencies": {
-    "monaco-editor": "0.41.0",
-    "monaco-editor-workers": "0.41.0",
-    "monaco-languageclient": "6.4.4",
-    "vscode": "npm:@codingame/monaco-vscode-api@1.81.5",
+    "monaco-editor": "0.44.0",
+    "monaco-editor-workers": "0.44.0",
+    "monaco-languageclient": "6.6.1",
+    "vscode": "npm:@codingame/monaco-vscode-api@1.83.3",
     "vscode-languageclient": "~8.1.0",
     "vscode-ws-jsonrpc": "^3.0.0",
     "vue": "^3.3.4"
   },
   "devDependencies": {
     "@types/node": "^20.5.7",
+    "@types/vscode": "1.83.1",
     "@vitejs/plugin-vue": "^4.2.3",
     "shx": "0.3.4",
     "typescript": "^5.0.2",

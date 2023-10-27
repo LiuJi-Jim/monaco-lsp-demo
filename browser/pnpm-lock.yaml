@@ -6,17 +6,17 @@ settings:
 
 dependencies:
   monaco-editor:
-    specifier: 0.41.0
-    version: 0.41.0
+    specifier: 0.44.0
+    version: 0.44.0
   monaco-editor-workers:
-    specifier: 0.41.0
-    version: 0.41.0(monaco-editor@0.41.0)
+    specifier: 0.44.0
+    version: 0.44.0(monaco-editor@0.44.0)
   monaco-languageclient:
-    specifier: 6.4.4
-    version: 6.4.4(@codingame/monaco-vscode-api@1.81.5)(monaco-editor@0.41.0)
+    specifier: 6.6.1
+    version: 6.6.1(@codingame/monaco-vscode-api@1.83.3)(monaco-editor@0.44.0)
   vscode:
-    specifier: npm:@codingame/monaco-vscode-api@1.81.5
-    version: /@codingame/monaco-vscode-api@1.81.5(@vscode/vscode-languagedetection@1.0.22)(monaco-editor@0.41.0)(vscode-oniguruma@1.7.0)(vscode-textmate@9.0.0)(xterm-addon-canvas@0.4.0)(xterm-addon-image@0.4.1)(xterm-addon-search@0.12.0)(xterm-addon-serialize@0.10.0)(xterm-addon-unicode11@0.5.0)(xterm-addon-webgl@0.15.0)(xterm@5.2.1)(yauzl@2.10.0)
+    specifier: npm:@codingame/monaco-vscode-api@1.83.3
+    version: /@codingame/monaco-vscode-api@1.83.3
   vscode-languageclient:
     specifier: ~8.1.0
     version: 8.1.0
@@ -31,6 +31,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.5.7
     version: 20.5.7
+  '@types/vscode':
+    specifier: 1.83.1
+    version: 1.83.1
   '@vitejs/plugin-vue':
     specifier: ^4.2.3
     version: 4.2.3(vite@4.4.5)(vue@3.3.4)
@@ -45,7 +48,7 @@ devDependencies:
     version: 4.4.5(@types/node@20.5.7)
   vite-plugin-monaco-editor:
     specifier: 1.1.0
-    version: 1.1.0(monaco-editor@0.41.0)
+    version: 1.1.0(monaco-editor@0.44.0)
   vue-tsc:
     specifier: ^1.8.5
     version: 1.8.5(typescript@5.0.2)
@@ -75,35 +78,39 @@ packages:
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
 
-  /@codingame/monaco-vscode-api@1.81.5(@vscode/vscode-languagedetection@1.0.22)(monaco-editor@0.41.0)(vscode-oniguruma@1.7.0)(vscode-textmate@9.0.0)(xterm-addon-canvas@0.4.0)(xterm-addon-image@0.4.1)(xterm-addon-search@0.12.0)(xterm-addon-serialize@0.10.0)(xterm-addon-unicode11@0.5.0)(xterm-addon-webgl@0.15.0)(xterm@5.2.1)(yauzl@2.10.0):
-    resolution: {integrity: sha512-JVL82xTOg0IZETqjRG9t0yslxs4qTpQ7op5a0pj4imZSgqp1MgihivctxsOXSFiQxHF1hALKoqWBKaVTkvMr+g==}
+  /@codingame/monaco-vscode-api@1.83.3:
+    resolution: {integrity: sha512-UhhThNT7mgUrnpLgoW0QiidFjD5vI0ia5uPvw88Z6uj4FngzXG33rqOhA/36xYwkFZKkNqOvSPnCG3zyTd0l2Q==}
     hasBin: true
-    peerDependencies:
-      '@vscode/vscode-languagedetection': ^1.0.22
-      monaco-editor: 0.41.0
-      vscode-oniguruma: ^1.7.0
-      vscode-textmate: ^9.0.0
-      xterm: 5.2.1
-      xterm-addon-canvas: 0.4.0
-      xterm-addon-image: 0.4.1
-      xterm-addon-search: 0.12.0
-      xterm-addon-serialize: 0.10.0
-      xterm-addon-unicode11: 0.5.0
-      xterm-addon-webgl: 0.15.0
-      yauzl: ^2.10.0
     dependencies:
-      '@vscode/vscode-languagedetection': 1.0.22
-      monaco-editor: 0.41.0
-      vscode-oniguruma: 1.7.0
-      vscode-textmate: 9.0.0
-      xterm: 5.2.1
-      xterm-addon-canvas: 0.4.0(xterm@5.2.1)
-      xterm-addon-image: 0.4.1(xterm@5.2.1)
-      xterm-addon-search: 0.12.0(xterm@5.2.1)
-      xterm-addon-serialize: 0.10.0(xterm@5.2.1)
-      xterm-addon-unicode11: 0.5.0(xterm@5.2.1)
-      xterm-addon-webgl: 0.15.0(xterm@5.2.1)
-      yauzl: 2.10.0
+      monaco-editor: 0.44.0
+    dev: false
+
+  /@codingame/monaco-vscode-api@1.83.5:
+    resolution: {integrity: sha512-HWmI3e2LooNkJG7AB5KYkzqkFma6G7tlk8QO6RI54HykazMQEFNpOEkrnS9UJHGsvpT+1hDCtIkufalLdxqMzA==}
+    hasBin: true
+    dependencies:
+      monaco-editor: 0.44.0
+    dev: false
+
+  /@codingame/monaco-vscode-editor-service-override@1.83.5:
+    resolution: {integrity: sha512-MORmlcfBHmhHmnkXq6jAH9uB4N08RIgFGOC2gpySgCMWpD0dHd/hsJdJNS39FSRpbPj69gbaZvDW4daKvJABrA==}
+    dependencies:
+      monaco-editor: 0.44.0
+      vscode: /@codingame/monaco-vscode-api@1.83.5
+    dev: false
+
+  /@codingame/monaco-vscode-languages-service-override@1.83.5:
+    resolution: {integrity: sha512-8mo9qGEBYl0whFq0PQslLBwFb2zV9asyOJYuR+BIrUyGb73NYJjKd0PghaDi8NBsBS7EBSxx3bugVNs1FXQNYw==}
+    dependencies:
+      monaco-editor: 0.44.0
+      vscode: /@codingame/monaco-vscode-api@1.83.5
+    dev: false
+
+  /@codingame/monaco-vscode-model-service-override@1.83.5:
+    resolution: {integrity: sha512-/mNyXlBdv+55taMuuCX4mHGwmMqvcNzlatYAX45QPLFW48hyQYUt+xQBYX1jBNcyjcFY4Mx7VzxT6SvNJGJA3A==}
+    dependencies:
+      monaco-editor: 0.44.0
+      vscode: /@codingame/monaco-vscode-api@1.83.5
     dev: false
 
   /@esbuild/android-arm64@0.18.20:
@@ -311,6 +318,10 @@ packages:
     resolution: {integrity: sha512-dP7f3LdZIysZnmvP3ANJYTSwg+wLLl8p7RqniVlV7j+oXSXAbt9h0WIBFmJy5inWZoX9wZN6eXx+YXd9Rh3RBA==}
     dev: true
 
+  /@types/vscode@1.83.1:
+    resolution: {integrity: sha512-BHu51NaNKOtDf3BOonY3sKFFmZKEpRkzqkZVpSYxowLbs5JqjOQemYFob7Gs5rpxE5tiGhfpnMpcdF/oKrLg4w==}
+    dev: true
+
   /@vitejs/plugin-vue@4.2.3(vite@4.4.5)(vue@3.3.4):
     resolution: {integrity: sha512-R6JDUfiZbJA9cMiguQ7jxALsgiprjBeHL5ikpXfJCH62pPHtI+JdJ5xWj6Ev73yXSlYl86+blXn1kZHQ7uElxw==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -339,11 +350,6 @@ packages:
     dependencies:
       '@volar/language-core': 1.9.2
     dev: true
-
-  /@vscode/vscode-languagedetection@1.0.22:
-    resolution: {integrity: sha512-rQ/BgMyLuIXSmbA0MSkIPHtcOw14QkeDbAq19sjvaS9LTRr905yij0S8lsyqN5JgOsbtIx7pAcyOxFMzPmqhZQ==}
-    hasBin: true
-    dev: false
 
   /@vue/compiler-core@3.3.4:
     resolution: {integrity: sha512-cquyDNvZ6jTbf/+x+AgM2Arrp6G4Dzbb0R64jiG804HRMfRiFXWI6kqUVqZ6ZR0bQhIoQjB4+2bhNtVwndW15g==}
@@ -487,10 +493,6 @@ packages:
     dependencies:
       balanced-match: 1.0.2
 
-  /buffer-crc32@0.2.13:
-    resolution: {integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==}
-    dev: false
-
   /concat-map@0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
     dev: true
@@ -534,12 +536,6 @@ packages:
 
   /estree-walker@2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
-
-  /fd-slicer@1.1.0:
-    resolution: {integrity: sha512-cE1qsB/VwyQozZ+q1dGxR8LBYNZeofhEdUNGSMbQD3Gw2lAzX9Zb3uIU6Ebc/Fmyjo9AWWfnn0AUCHqtevs/8g==}
-    dependencies:
-      pend: 1.2.0
-    dev: false
 
   /fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
@@ -638,28 +634,30 @@ packages:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
     dev: true
 
-  /monaco-editor-workers@0.41.0(monaco-editor@0.41.0):
-    resolution: {integrity: sha512-suMPJA44bk/WapkSxbY3ELUQbznpvPHf23oz600Su9dSD75BZMjEQdCuZ9gVvligffMLnyNFJJEx5sSb75LiwQ==}
+  /monaco-editor-workers@0.44.0(monaco-editor@0.44.0):
+    resolution: {integrity: sha512-rvdO292CMnxs9Y3Hl6nAjVx8d0SjcDgmXmZNVoaOCNJrdnTEEzcWcHJzEQsajTAAq4H2oeBmDZRpDE0US5DhXA==}
     peerDependencies:
-      monaco-editor: ~0.41.0
+      monaco-editor: ~0.44.0
     dependencies:
-      monaco-editor: 0.41.0
+      monaco-editor: 0.44.0
     dev: false
 
-  /monaco-editor@0.41.0:
-    resolution: {integrity: sha512-1o4olnZJsiLmv5pwLEAmzHTE/5geLKQ07BrGxlF4Ri/AXAc2yyDGZwHjiTqD8D/ROKUZmwMA28A+yEowLNOEcA==}
+  /monaco-editor@0.44.0:
+    resolution: {integrity: sha512-5SmjNStN6bSuSE5WPT2ZV+iYn1/yI9sd4Igtk23ChvqB7kDk9lZbB9F5frsuvpB+2njdIeGGFf2G4gbE6rCC9Q==}
 
-  /monaco-languageclient@6.4.4(@codingame/monaco-vscode-api@1.81.5)(monaco-editor@0.41.0):
-    resolution: {integrity: sha512-gg1Q9iFZd6PrwPeL+eAAzv4exTdbynXr9duxb/v0XQ2+BUdOoCsqIsu7QjQ0zlcQVjM2/IadqMj844Brsw36/w==}
+  /monaco-languageclient@6.6.1(@codingame/monaco-vscode-api@1.83.3)(monaco-editor@0.44.0):
+    resolution: {integrity: sha512-BtuVTfwnFbutgOd4npXj0EXXrp8wl8FENM4ub5pJdV19uK8YwlMtoMcFIGONZp+pxU/gte25k62kAi4r5QsNEw==}
     engines: {node: '>=16.11.0', npm: '>=9.0.0'}
     requiresBuild: true
     peerDependencies:
-      monaco-editor: ~0.41.0
-      vscode: npm:@codingame/monaco-vscode-api@1.81.5
+      monaco-editor: ~0.44.0
+      vscode: npm:@codingame/monaco-vscode-api@>=1.83.3 <1.84.0
     dependencies:
-      monaco-editor: 0.41.0
-      vscode: /@codingame/monaco-vscode-api@1.81.5(@vscode/vscode-languagedetection@1.0.22)(monaco-editor@0.41.0)(vscode-oniguruma@1.7.0)(vscode-textmate@9.0.0)(xterm-addon-canvas@0.4.0)(xterm-addon-image@0.4.1)(xterm-addon-search@0.12.0)(xterm-addon-serialize@0.10.0)(xterm-addon-unicode11@0.5.0)(xterm-addon-webgl@0.15.0)(xterm@5.2.1)(yauzl@2.10.0)
-      vscode-jsonrpc: 8.1.0
+      '@codingame/monaco-vscode-editor-service-override': 1.83.5
+      '@codingame/monaco-vscode-languages-service-override': 1.83.5
+      '@codingame/monaco-vscode-model-service-override': 1.83.5
+      monaco-editor: 0.44.0
+      vscode: /@codingame/monaco-vscode-api@1.83.3
       vscode-languageclient: 8.1.0
     dev: false
 
@@ -686,10 +684,6 @@ packages:
   /path-parse@1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
     dev: true
-
-  /pend@1.2.0:
-    resolution: {integrity: sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==}
-    dev: false
 
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
@@ -771,12 +765,12 @@ packages:
     hasBin: true
     dev: true
 
-  /vite-plugin-monaco-editor@1.1.0(monaco-editor@0.41.0):
+  /vite-plugin-monaco-editor@1.1.0(monaco-editor@0.44.0):
     resolution: {integrity: sha512-IvtUqZotrRoVqwT0PBBDIZPNraya3BxN/bfcNfnxZ5rkJiGcNtO5eAOWWSgT7zullIAEqQwxMU83yL9J5k7gww==}
     peerDependencies:
       monaco-editor: '>=0.33.0'
     dependencies:
-      monaco-editor: 0.41.0
+      monaco-editor: 0.44.0
     dev: true
 
   /vite@4.4.5(@types/node@20.5.7):
@@ -840,14 +834,6 @@ packages:
     resolution: {integrity: sha512-SYU4z1dL0PyIMd4Vj8YOqFvHu7Hz/enbWtpfnVbJHU4Nd1YNYx8u0ennumc6h48GQNeOLxmwySmnADouT/AuZA==}
     dev: false
 
-  /vscode-oniguruma@1.7.0:
-    resolution: {integrity: sha512-L9WMGRfrjOhgHSdOYgCt/yRMsXzLDJSL7BPrOZt73gU0iWO4mpqzqQzOz5srxqTvMBaR0XZTSrVWo4j55Rc6cA==}
-    dev: false
-
-  /vscode-textmate@9.0.0:
-    resolution: {integrity: sha512-Cl65diFGxz7gpwbav10HqiY/eVYTO1sjQpmRmV991Bj7wAoOAjGQ97PpQcXorDE2Uc4hnGWLY17xme+5t6MlSg==}
-    dev: false
-
   /vscode-ws-jsonrpc@3.0.0:
     resolution: {integrity: sha512-22IbVb2K691np9pOubyahNBj1BicsbtlbiaHOJu5/rvyWDqmqPMAqpAfojwGjdBztp8EtO8TAO7lmyY6hnmYAA==}
     engines: {node: '>=16.11.0', npm: '>=8.0.0'}
@@ -887,64 +873,5 @@ packages:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
     dev: true
 
-  /xterm-addon-canvas@0.4.0(xterm@5.2.1):
-    resolution: {integrity: sha512-iTC8CdjX9+hGX7jiEuiDMXzHsY/FKJdVnbjep5xjRXNu7RKOk15xuecIkJ7HZORqMVPpr4DGS3jyd9XUoBuxqw==}
-    peerDependencies:
-      xterm: ^5.0.0
-    dependencies:
-      xterm: 5.2.1
-    dev: false
-
-  /xterm-addon-image@0.4.1(xterm@5.2.1):
-    resolution: {integrity: sha512-iJpYyvtbHg4oXSv+D6J73ZfCjnboZpbZ567MLplXDBlYSUknv3kvPTfVMPJATV7Zsx7+bDgyXboCh9vsDf/m/w==}
-    peerDependencies:
-      xterm: ~5.2.0
-    dependencies:
-      xterm: 5.2.1
-    dev: false
-
-  /xterm-addon-search@0.12.0(xterm@5.2.1):
-    resolution: {integrity: sha512-hXAuO7Ts2+Jf9K8mZrUx8IFd7c/Flgks/jyqA1L4reymyfmXtcsd+WDLel8R9Tgy2CLyKABVBP09/Ua/FmXcvg==}
-    peerDependencies:
-      xterm: ^5.0.0
-    dependencies:
-      xterm: 5.2.1
-    dev: false
-
-  /xterm-addon-serialize@0.10.0(xterm@5.2.1):
-    resolution: {integrity: sha512-Syp9eSBypn70iAczcJ+kAi0foQIepAvFS6x53JwI4XylTBHn87Ep9fovslhwmUV3rwH2yMnpdDjXH5W/whx2lA==}
-    peerDependencies:
-      xterm: ^5.0.0
-    dependencies:
-      xterm: 5.2.1
-    dev: false
-
-  /xterm-addon-unicode11@0.5.0(xterm@5.2.1):
-    resolution: {integrity: sha512-Jm4/g4QiTxiKiTbYICQgC791ubhIZyoIwxAIgOW8z8HWFNY+lwk+dwaKEaEeGBfM48Vk8fklsUW9u/PlenYEBg==}
-    peerDependencies:
-      xterm: ^5.0.0
-    dependencies:
-      xterm: 5.2.1
-    dev: false
-
-  /xterm-addon-webgl@0.15.0(xterm@5.2.1):
-    resolution: {integrity: sha512-ZLcqogMFHr4g/YRhcCh3xE8tTklnyut/M+O/XhVsFBRB/YCvYhPdLQ5/AQk54V0wjWAQpa8CF3W8DVR9OqyMCg==}
-    peerDependencies:
-      xterm: ^5.0.0
-    dependencies:
-      xterm: 5.2.1
-    dev: false
-
-  /xterm@5.2.1:
-    resolution: {integrity: sha512-cs5Y1fFevgcdoh2hJROMVIWwoBHD80P1fIP79gopLHJIE4kTzzblanoivxTiQ4+92YM9IxS36H1q0MxIJXQBcA==}
-    dev: false
-
   /yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
-
-  /yauzl@2.10.0:
-    resolution: {integrity: sha512-p4a9I6X6nu6IhoGmBqAcbJy1mlC4j27vEPZX9F4L4/vZT3Lyq1VkFHw/V/PUcB9Buo+DG3iHkT0x3Qya58zc3g==}
-    dependencies:
-      buffer-crc32: 0.2.13
-      fd-slicer: 1.1.0
-    dev: false
