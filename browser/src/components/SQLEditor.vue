@@ -3,6 +3,7 @@ import { onBeforeUnmount, onMounted, ref, shallowRef } from 'vue';
 import type { editor as Editor } from 'monaco-editor';
 import { MonacoLanguageClient } from 'monaco-languageclient';
 import ExecuteCommand from './ExecuteCommand.vue';
+import { initialize as initializeMonaco } from '../monaco/initialize';
 
 const containerRef = ref<HTMLDivElement>();
 const editorRef = ref<Editor.IStandaloneCodeEditor>();
@@ -11,15 +12,12 @@ const languageClientRef = shallowRef<MonacoLanguageClient>();
 
 onMounted(async () => {
   console.log('mounted');
-  const { performInit } = await import('../monaco/services');
-  const { createUrl, createWebSocketAndStartClient } = await import(
-    '../monaco/client'
-  );
   const { createExampleSqlContent, createSqlEditor } = await import(
     '../monaco/editor'
   );
-
-  await performInit(true);
+  const { webSocket, languageClient } = await initializeMonaco();
+  webSocketRef.value = webSocket;
+  languageClientRef.value = languageClient;
 
   const container = containerRef.value!;
   const content = createExampleSqlContent();
@@ -28,20 +26,10 @@ onMounted(async () => {
     content,
   });
   console.log('result', result);
-  // const url = createUrl('localhost', 23333, '/helloServer');
-  const url = createUrl('localhost', 8080, '/lsp');
-
-  const { webSocket, languageClient } = createWebSocketAndStartClient(url);
-  webSocketRef.value = webSocket;
-  languageClient.then((client) => {
-    languageClientRef.value = client;
-  });
 });
 
 onBeforeUnmount(() => {
   editorRef.value?.dispose();
-  webSocketRef.value?.close();
-  languageClientRef.value?.dispose();
 });
 </script>
 
