@@ -31,6 +31,7 @@ export class SqlServer {
     this.documents.listen(this.connection);
 
     this.connection.onInitialize((params) => {
+      params.initializationOptions
       if (params.rootPath) {
         this.workspaceRoot = URI.URI.file(params.rootPath);
       } else if (params.rootUri) {

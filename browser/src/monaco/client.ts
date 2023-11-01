@@ -55,18 +55,30 @@ export const createUrl = (
   return url.toString();
 };
 
-export const createWebSocketAndStartClient = (url: string): WebSocket => {
+export const createWebSocketAndStartClient = (
+  url: string
+): {
+  webSocket: WebSocket;
+  languageClient: Promise<MonacoLanguageClient>;
+} => {
   const webSocket = new WebSocket(url);
-  webSocket.onopen = () => {
-    const socket = toSocket(webSocket);
-    const reader = new WebSocketMessageReader(socket);
-    const writer = new WebSocketMessageWriter(socket);
-    const languageClient = createLanguageClient({
-      reader,
-      writer,
-    });
-    languageClient.start();
-    reader.onClose(() => languageClient.stop());
+  const languageClient = new Promise<MonacoLanguageClient>((resolve) => {
+    webSocket.onopen = () => {
+      const socket = toSocket(webSocket);
+      const reader = new WebSocketMessageReader(socket);
+      const writer = new WebSocketMessageWriter(socket);
+      const languageClient = createLanguageClient({
+        reader,
+        writer,
+      });
+      languageClient.start();
+      reader.onClose(() => languageClient.stop());
+      resolve(languageClient);
+    };
+  });
+
+  return {
+    webSocket,
+    languageClient,
   };
-  return webSocket;
 };
