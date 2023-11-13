@@ -1,25 +1,10 @@
 import { buildWorkerDefinition } from 'monaco-editor-workers';
 import 'monaco-editor/esm/vs/editor/editor.all.js';
-import { editor } from 'monaco-editor/esm/vs/editor/editor.api.js';
-// import 'monaco-editor/esm/vs/platform/accessibility/browser/accessibilityService.js';
-// import 'monaco-editor/esm/vs/editor/standalone/browser/iPadShowKeyboard/iPadShowKeyboard.js';
-// import 'monaco-editor/esm/vs/editor/standalone/browser/inspectTokens/inspectTokens.js';
-// import 'monaco-editor/esm/vs/editor/standalone/browser/quickAccess/standaloneHelpQuickAccess.js';
-// import 'monaco-editor/esm/vs/editor/standalone/browser/quickAccess/standaloneGotoLineQuickAccess.js';
-// import 'monaco-editor/esm/vs/editor/standalone/browser/quickAccess/standaloneGotoSymbolQuickAccess.js';
-// import 'monaco-editor/esm/vs/editor/standalone/browser/quickAccess/standaloneCommandsQuickAccess.js';
-// import 'monaco-editor/esm/vs/editor/standalone/browser/referenceSearch/standaloneReferenceSearch.js';
-
-import 'monaco-editor/esm/vs/basic-languages/sql/sql.contribution.js';
-// import 'monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution.js';
-// import 'monaco-editor/esm/vs/basic-languages/typescript/typescript.contribution.js';
-// import 'monaco-editor/esm/vs/language/typescript/monaco.contribution.js';
-import {
-  createModelReference,
-  createConfiguredEditor,
-  IReference,
-  ITextFileEditorModel,
-} from 'vscode/monaco';
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.js';
+import "monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution.js";
+import "monaco-editor/esm/vs/basic-languages/redis/redis.contribution.js";
+import "monaco-editor/esm/vs/basic-languages/sql/sql.contribution.js";
+import "monaco-editor/esm/vs/basic-languages/typescript/typescript.contribution.js";
 import { Uri } from 'vscode';
 
 buildWorkerDefinition(
@@ -30,9 +15,9 @@ buildWorkerDefinition(
 
 export type ExampleSqlEditor = {
   languageId: string;
-  editor: editor.IStandaloneCodeEditor;
+  editor: monaco.editor.IStandaloneCodeEditor;
   uri: Uri;
-  modelRef: IReference<ITextFileEditorModel>;
+  model: monaco.editor.ITextModel;
 };
 
 export const createExampleSqlContent = () => {
@@ -57,12 +42,11 @@ export const createSqlEditor = async (config: {
 }) => {
   // create the model
   const uri = Uri.parse('/workspace/employee.sql');
-  const modelRef = await createModelReference(uri, config.content);
-  modelRef.object.setLanguageId('sql');
+  const model = monaco.editor.createModel(config.content, 'sql', uri);
 
   // create monaco editor
-  const editor = createConfiguredEditor(config.htmlElement, {
-    model: modelRef.object.textEditorModel,
+  const editor = monaco.editor.create(config.htmlElement, {
+    model,
     glyphMargin: true,
     lightbulb: {
       enabled: true,
@@ -74,7 +58,7 @@ export const createSqlEditor = async (config: {
   const result = {
     editor,
     uri,
-    modelRef,
+    model,
   } as ExampleSqlEditor;
   return Promise.resolve(result);
 };

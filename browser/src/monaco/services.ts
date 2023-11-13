@@ -13,7 +13,7 @@ export const performInit = async (vscodeApiInit: boolean) => {
         enableTextmateService: false,
         enableModelService: true,
         configureEditorOrViewsService: {},
-        enableKeybindingsService: true,
+        // enableKeybindingsService: true,
         enableLanguagesService: true,
         enableOutputService: true,
         enableAccessibilityService: true,

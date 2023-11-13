@@ -14,8 +14,8 @@ const runner = async (): Promise<LSPServices> => {
 
   await performInit(true);
 
-  // const url = createUrl('localhost', 23333, '/helloServer');
-  const url = createUrl('localhost', 8080, '/lsp');
+  const url = createUrl('localhost', 23333, '/helloServer');
+  // const url = createUrl('localhost', 8080, '/lsp');
 
   const { webSocket, languageClient } = createWebSocketAndStartClient(url);
   return {
