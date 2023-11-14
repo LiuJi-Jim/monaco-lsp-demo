@@ -3,7 +3,6 @@ import { onBeforeUnmount, onMounted, ref, shallowRef } from 'vue';
 import type { editor as Editor } from 'monaco-editor';
 import { MonacoLanguageClient } from 'monaco-languageclient';
 import ExecuteCommand from './ExecuteCommand.vue';
-import { initialize as initializeMonaco } from '../monaco/initialize';
 
 const containerRef = ref<HTMLDivElement>();
 const editorRef = ref<Editor.IStandaloneCodeEditor>();
@@ -15,6 +14,7 @@ onMounted(async () => {
   const { createExampleSqlContent, createSqlEditor } = await import(
     '../monaco/editor'
   );
+  const { initialize: initializeMonaco } = await import('../monaco/initialize');
   const { webSocket, languageClient } = await initializeMonaco();
   webSocketRef.value = webSocket;
   languageClientRef.value = languageClient;

@@ -13,11 +13,11 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.5.0",
-    "monaco-editor": "0.41.0",
-    "monaco-editor-workers": "0.41.0",
-    "monaco-languageclient": "6.4.6",
-    "vscode": "npm:@codingame/monaco-vscode-api@1.81.7",
-    "vscode-languageclient": "8.1.0",
+    "monaco-editor": "0.44.0",
+    "monaco-editor-workers": "0.44.0",
+    "monaco-languageclient": "7.0.0",
+    "vscode": "npm:@codingame/monaco-vscode-api@1.83.5",
+    "vscode-languageclient": "9.0.1",
     "vscode-ws-jsonrpc": "3.0.0",
     "vue": "3.2.47"
   },
@@ -32,5 +32,9 @@
     "typescript": "5.2.2",
     "vite": "4.4.9",
     "vue-tsc": "1.8.11"
+  },
+  "overrides": {
+    "monaco-editor": "npm:@codingame/monaco-editor-treemended@>=1.83.5 <1.84.0",
+    "vscode": "npm:@codingame/monaco-vscode-api@>=1.83.5 <1.84.0"
   }
 }

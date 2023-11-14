@@ -31,7 +31,7 @@ export class SqlServer {
     this.documents.listen(this.connection);
 
     this.connection.onInitialize((params) => {
-      params.initializationOptions
+      params.initializationOptions;
       if (params.rootPath) {
         this.workspaceRoot = URI.URI.file(params.rootPath);
       } else if (params.rootUri) {
@@ -52,6 +52,9 @@ export class SqlServer {
     this.connection.onCompletionResolve((params) =>
       this.resolveCompletion(params)
     );
+    this.connection.onExecuteCommand(async (params) => {
+      return { echo: params };
+    });
   }
 
   start() {
